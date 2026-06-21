@@ -89,22 +89,13 @@ model Follow {
   id Int @id @default(autoincrement())
 
   followerId Int
-
   followingId Int
 
   status FollowStatus @default(PENDING)
 
-  follower User @relation(
-    "followers",
-    fields: [followerId],
-    references: [id]
-  )
+  follower User @relation("followers", fields: [followerId], references: [id])
 
-  following User @relation(
-    "following",
-    fields: [followingId],
-    references: [id]
-  )
+  following User @relation("following", fields: [followingId], references: [id])
 
   @@unique([followerId, followingId])
 }
