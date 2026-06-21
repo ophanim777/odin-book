@@ -21,6 +21,15 @@ require("./routes/commentRoutes");
 const likeRoutes =
 require("./routes/likeRoutes");
 
+const followRoutes =
+require("./routes/followRoutes");
+
+const profileRoutes =
+require("./routes/profileRoutes");
+
+const userRoutes =
+require("./routes/userRoutes");
+
 app.use(express.json());
 
 app.use(express.urlencoded({
