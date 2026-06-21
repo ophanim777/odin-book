@@ -10,6 +10,9 @@ const cors = require("cors");
 
 const app = express();
 
+const authRoutes =
+require("./routes/authRoutes");
+
 app.use(express.json());
 
 app.use(express.urlencoded({
@@ -34,6 +37,8 @@ app.use(
 app.use(passport.initialize());
 
 app.use(passport.session());
+
+app.use("/auth", authRoutes);
 
 app.get("/", (req, res) => {
 
