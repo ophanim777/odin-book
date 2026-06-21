@@ -94,3 +94,21 @@ exports.login = (req, res, next) => {
   )(req, res, next);
 
 };
+
+exports.logout = (req, res, next) => {
+
+  req.logout(err => {
+
+    if (err) {
+      return next(err);
+    }
+
+    req.session.destroy();
+
+    res.json({
+      message: "Logout successful"
+    });
+
+  });
+
+};
