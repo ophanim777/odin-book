@@ -112,3 +112,17 @@ exports.logout = (req, res, next) => {
   });
 
 };
+
+exports.me = (req, res) => {
+
+  if (!req.user) {
+
+    return res.status(401).json({
+      message: "Not logged in"
+    });
+
+  }
+
+  res.json(req.user);
+
+};
