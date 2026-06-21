@@ -30,6 +30,9 @@ require("./routes/profileRoutes");
 const userRoutes =
 require("./routes/userRoutes");
 
+const errorHandler =
+require("./middleware/errorMiddleware");
+
 app.use(express.json());
 
 app.use(express.urlencoded({
@@ -68,6 +71,8 @@ app.use("/follow", followRoutes);
 app.use("/profile", profileRoutes);
 
 app.use("/users", userRoutes);
+
+app.use(errorHandler);
 
 app.get("/", (req, res) => {
 
