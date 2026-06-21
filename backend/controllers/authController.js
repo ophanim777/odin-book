@@ -58,3 +58,39 @@ exports.register = async (req, res) => {
   }
 
 };
+
+exports.login = (req, res, next) => {
+
+  passport.authenticate(
+    "local",
+    (err, user) => {
+
+      if (err) {
+        return next(err);
+      }
+
+      if (!user) {
+
+        return res.status(401).json({
+          message: "Invalid credentials"
+        });
+
+      }
+
+      req.login(user, err => {
+
+        if (err) {
+          return next(err);
+        }
+
+        res.json({
+          message: "Login successful",
+          user
+        });
+
+      });
+
+    }
+  )(req, res, next);
+
+};
