@@ -50,3 +50,19 @@ console.log(err);
 await prisma.$disconnect();
 
 });
+
+await prisma.user.create({
+
+data:{
+
+firstName:"Guest",
+
+lastName:"User",
+
+email:"guest@test.com",
+
+password:hashedPassword
+
+}
+
+});
