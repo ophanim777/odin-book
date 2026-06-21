@@ -63,6 +63,12 @@ app.use("/comments", commentRoutes);
 
 app.use("/likes", likeRoutes);
 
+app.use("/follow", followRoutes);
+
+app.use("/profile", profileRoutes);
+
+app.use("/users", userRoutes);
+
 app.get("/", (req, res) => {
 
   res.json({
