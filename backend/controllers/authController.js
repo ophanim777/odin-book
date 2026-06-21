@@ -126,3 +126,40 @@ exports.me = (req, res) => {
   res.json(req.user);
 
 };
+
+
+exports.guestLogin = (req, res, next) => {
+
+  req.body.email = "guest@test.com";
+  req.body.password = "123456";
+
+  passport.authenticate(
+    "local",
+    (err, user) => {
+
+      if (err) {
+        return next(err);
+      }
+
+      if (!user) {
+
+        return res.status(401).json({
+          message: "Guest account unavailable"
+        });
+
+      }
+
+      req.login(user, err => {
+
+        if (err) {
+          return next(err);
+        }
+
+        res.json(user);
+
+      });
+
+    }
+  )(req, res, next);
+
+};
