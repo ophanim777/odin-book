@@ -48,6 +48,12 @@ app.use(passport.session());
 
 app.use("/auth", authRoutes);
 
+app.use("/posts", postRoutes);
+
+app.use("/comments", commentRoutes);
+
+app.use("/likes", likeRoutes);
+
 app.get("/", (req, res) => {
 
   res.json({
